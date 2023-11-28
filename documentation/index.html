@@ -25,12 +25,27 @@
   <link href="assets/css/animejs.css" rel="stylesheet">
   <link href="assets/css/anime-theme.css" rel="stylesheet">
   <link href="assets/css/documentation.css" rel="stylesheet">
-
+  <link href="assets/css/v4.css" rel="stylesheet">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-16LTPBS8QC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-16LTPBS8QC');
+  </script>
   <script src="../lib/anime.min.js"></script>
 </head>
 <body>
+  <div id="top-banner">
+    <button id="close-banner">✕</button>
+    <p>
+      Anime.js V4 is now in early access for GitHub Sponsors!
+    </p>
+    <a id="banner-cta" href="https://github.com/sponsors/juliangarnier" target="_blank">Try <span>Anime.js</span> V4</a>
+  </div>
   <div class="content">
-    <header class="header">
+    <header id="docs-header" class="header">
     <a class="logo" href="https://github.com/juliangarnier/anime/">
       <img class="anime-mini-logo" src="assets/img/anime-mini-logo.svg" />
       <span class="version-number"></span>
@@ -2108,7 +2123,7 @@ anime({
   <h3 class="demo-title">Axis</h3>
   <div class="demo-description">
     <p>
-      Forces the direction of a <a href="#gridStaggering" class="color-staggering">grid starrering</a> effect.
+      Forces the direction of a <a href="gridStaggering" class="color-staggering">grid staggering</a> effect.
     </p>
     <pre><code>anime.stagger(value, {grid: [rows, columns], axis: 'x'})</code></pre>
     <table>
@@ -2471,7 +2486,7 @@ tl
   <h3 class="demo-title">Parameters inheritance</h3>
   <div class="demo-description">
     <p>
-      Parameters set in the parent timeline instance will be inherited by all the children.
+      Some parameters set in the parent timeline instance can be inherited by all the children.
     </p>
     <table>
       <thead>
@@ -2479,6 +2494,9 @@ tl
       </thead>
       <tr>
         <td><code>targets</code></td>
+      </tr>
+      <tr>
+        <td><code>easing</code></td>
       </tr>
       <tr>
         <td><code>duration</code></td>
@@ -2513,10 +2531,10 @@ tl
 var tl = anime.timeline({
   targets: '.params-inheritance-demo .el',
   delay: function(el, i) { return i * 200 },
-  duration: 500,
-  easing: 'easeOutExpo',
-  direction: 'alternate',
-  loop: true
+  duration: 500, // Can be inherited
+  easing: 'easeOutExpo', // Can be inherited
+  direction: 'alternate', // Is not inherited
+  loop: true // Is not inherited
 });
 
 tl
@@ -4165,6 +4183,37 @@ anime({
       </header>
       <div class="info-output"></div>
     </section>
+    <section class="pane sponsors-pane">
+      <header class="description-header">
+        <a target="_blank" href="https://github.com/sponsors/juliangarnier"><h2>Sponsors</h2></a>
+      </header>
+      <div id="docs-sponsors-list">
+        <a class="sponsor-logo" target="_blank" href="https://github.com/sponsors/juliangarnier">
+          <img src="assets/img/sponsor-logo.png" />
+          <span class="sponsor-name">Your logo here</span>
+        </a>
+        <a class="sponsor-logo" target="_blank" href="https://github.com/sponsors/juliangarnier">
+          <img src="assets/img/sponsor-logo.png" />
+          <span class="sponsor-name">Your logo here</span>
+        </a>
+        <a class="sponsor-logo" target="_blank" href="https://github.com/sponsors/juliangarnier">
+          <img src="assets/img/sponsor-logo.png" />
+          <span class="sponsor-name">Your logo here</span>
+        </a>
+        <a class="sponsor-logo" target="_blank" href="https://github.com/sponsors/juliangarnier">
+          <img src="assets/img/sponsor-logo.png" />
+          <span class="sponsor-name">Your logo here</span>
+        </a>
+        <a class="sponsor-logo" target="_blank" href="https://github.com/sponsors/juliangarnier">
+          <img src="assets/img/sponsor-logo.png" />
+          <span class="sponsor-name">Your logo here</span>
+        </a>
+        <a class="sponsor-logo" target="_blank" href="https://github.com/sponsors/juliangarnier">
+          <img src="assets/img/sponsor-logo.png" />
+          <span class="sponsor-name">Your logo here</span>
+        </a>
+      </div>
+    </section>
   </div>
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <script>
@@ -4178,5 +4227,6 @@ anime({
   <script src="assets/js/vendors/highlight.pack.js"></script>
   <script src="assets/js/vendors/beautify-html.js"></script>
   <script src="assets/js/documentation.js"></script>
+  <script src="assets/js/v4.js"></script>
 </body>
 </html>

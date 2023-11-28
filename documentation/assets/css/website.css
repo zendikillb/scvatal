@@ -108,7 +108,7 @@ a:hover .arrow:before,
 /* Header */
 
 .header {
-  margin-top: 16px;
+  padding-top: 16px;
 }
 
 .nav-bar-content {
@@ -124,7 +124,12 @@ a:hover .arrow:before,
   height: 48px;
 }
 
+.header a {
+  opacity: .001;
+}
+
 .nav-bar {
+  overflow: hidden;
   display: flex;
   justify-content: flex-end;
 }
@@ -145,6 +150,8 @@ a.main-cta {
   padding-left: 12px;
   padding-right: 12px;
   border-radius: 16px;
+  font-size: 16px;
+  font-weight: 600;
   line-height: 2;
   background-color: #F64E4D;
   transition: transform .25s ease;
@@ -529,7 +536,6 @@ a.feature-icon:hover img {
   bottom: 0;
   display: flex;
   align-items: center;
-  /*justify-content: space-between;*/
   width: 100%;
   height: 100%;
 }
@@ -920,17 +926,14 @@ a.feature-icon:hover img {
 .sphere-animation {
   position: absolute;
   opacity: .001;
-  top: 50%;
-  left: 50%;
-  width: 580px;
-  height: 580px;
-  margin: -290px 0 0 -290px;
+  top: 0%;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .sphere path {
-  /*opacity: .001;*/
   fill: rgba(37,36,35,.5);
-  /*fill: linear-gradient(-180deg, #FFFFFF 0%, #F6F4F2 35%, #F6F4F2 69%, #DDDAD7 100%);*/
   fill: url(#sphereGradient);
   stroke-width: 1px;
   stroke: #FF4847;

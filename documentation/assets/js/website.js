@@ -1,4 +1,4 @@
-// import anime from '../../../lib/anime.es.js';
+// import anime from '../../../src/index.js';
 
 /* Ontersection observer */
 
@@ -117,20 +117,30 @@ function isElementInViewport(el, inCB, outCB, rootMargin) {
   observer.observe(el);
 }
 
-function fitElementToParent(el, padding) {
-  var timeout = null;
+function fitElementToParent(el, padding, exception) {
+  let windowWidth = 0;
+  let timeout = 0;
   function resize() {
-    if (timeout) clearTimeout(timeout);
     anime.set(el, {scale: 1});
+    if (exception) anime.set(exception, {scale: 1});
     var pad = padding || 0;
     var parentEl = el.parentNode;
     var elOffsetWidth = el.offsetWidth - pad;
     var parentOffsetWidth = parentEl.offsetWidth;
     var ratio = parentOffsetWidth / elOffsetWidth;
-    timeout = setTimeout(anime.set(el, {scale: ratio}), 100);
+    var invertedRatio = elOffsetWidth / parentOffsetWidth;
+    anime.set(el, {scale: ratio});
+    if (exception) anime.set(exception, {scale: invertedRatio});
   }
   resize();
-  window.addEventListener('resize', resize);
+  window.addEventListener('resize', function() {
+    if (window.innerWidth === windowWidth) return;
+    clearTimeout(timeout);
+    timeout = setTimeout(function() {
+      windowWidth = window.innerWidth;
+      resize();
+    }, 15);
+  });
 }
 
 // Update date and version number
@@ -153,7 +163,7 @@ var logoAnimation = (function() {
   var logoAnimationEl = document.querySelector('.logo-animation');
   var bouncePath = anime.path('.bounce path');
 
-  fitElementToParent(logoAnimationEl, 0);
+  fitElementToParent(logoAnimationEl, 0, '.bounce svg');
 
   anime.set(['.letter-a', '.letter-n', '.letter-i'], {translateX: 70});
   anime.set('.letter-e', {translateX: -70});
@@ -279,7 +289,7 @@ var headerIntroAnimation = anime.timeline({
   autoplay: false
 })
 .add({
-  targets: ['.header a', '.secondary-menu a', '.section-intro .feature-description-text'],
+  targets: ['.header a', '.secondary-menu a', '.section-intro .feature-description-text', '.sponsors-grid'],
   opacity: {value: [0.001, 1], easing: 'linear', duration: 300},
   translateY: [40, 0],
   translateZ: 0,
@@ -441,10 +451,8 @@ var sphereAnimation = (function() {
   var sphereEl = document.querySelector('.sphere-animation');
   var spherePathEls = sphereEl.querySelectorAll('.sphere path');
   var pathLength = spherePathEls.length;
-  var hasStarted = false;
+  var introPlayed = false;
   var aimations = [];
-
-  fitElementToParent(sphereEl);
 
   var breathAnimation = anime({
     begin: function() {
@@ -504,7 +512,10 @@ var sphereAnimation = (function() {
     }, 0);
 
   function play() {
-    introAnimation.play();
+    if (!introPlayed) {
+      introAnimation.play();
+      introPlayed = true;
+    }
     breathAnimation.play();
     shadowAnimation.play();
   }
@@ -563,7 +574,7 @@ var advancedStaggeringAnimation = (function() {
     .add({
       targets: '.stagger-visualizer .cursor',
       keyframes: [
-        { scale: .75, duration: 120}, 
+        { scale: .75, duration: 120},
         { scale: 2.5, duration: 220},
         { scale: 1.5, duration: 450},
       ],
@@ -688,7 +699,7 @@ var timeControlAnimation = (function() {
         end: time.start,
         easing: 'spring(.3, 200, 5, 1)',
         update: function() { timelineAnimation.seek(time.end); },
-        complete: function() { 
+        complete: function() {
           controlAnimationCanMove = true;
           moveControlAnimation();
         }
@@ -811,10 +822,10 @@ var layeredAnimation = (function() {
       complete: function(anim) { animateShape(anim.animatables[0].target); },
     })
     .add({
-      translateX: createKeyframes(function(el) { 
+      translateX: createKeyframes(function(el) {
         return el.classList.contains('large') ? anime.random(-300, 300) : anime.random(-520, 520);
       }),
-      translateY: createKeyframes(function(el) { 
+      translateY: createKeyframes(function(el) {
         return el.classList.contains('large') ? anime.random(-110, 110) : anime.random(-280, 280);
       }),
       rotate: createKeyframes(function() { return anime.random(-180, 180); }),
@@ -835,7 +846,7 @@ var layeredAnimation = (function() {
     if (polyEl) {
       animation.add({
         targets: polyEl,
-        points: createKeyframes(function() { 
+        points: createKeyframes(function() {
           var scale = anime.random(72, 180) / 100;
           return trianglePoints.map(function(p) { return p * scale; }).join(' ');
         }),
@@ -858,12 +869,12 @@ var layeredAnimation = (function() {
       complete: function(anim) { animateProgress(anim.animatables[0].target); },
     })
     .add({
-      transformOrigin: createKeyframes(function(el) { 
+      transformOrigin: createKeyframes(function(el) {
         return anime.random(0, 100) + '%';
       })
     }, 0)
     .add({
-      scaleX: createKeyframes(function(el) { 
+      scaleX: createKeyframes(function(el) {
         return anime.random(10, 100) / 100;
       })
     }, 0);
