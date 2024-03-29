@@ -9,15 +9,6 @@
   anime.js
 </h1>
 
-<h1 align="center">
-  <picture align="center">
-    <source media="(prefers-color-scheme: dark)" srcset="./website/assets/images/readme/animejs-v4-logo-animation-dark.gif">
-    <img align="center" alt="Anime.js V4 logo animation" src="./website/assets/images/readme/animejs-v4-logo-animation.gif" width="560">
-  </picture>
-  <br>
-  anime.js
-</h1>
-
 <h4 align="center">JavaScript animation engine | <a href="https://animejs.com" target="_blank">animejs.com</a></h4>
 
 <p align="center">
@@ -42,25 +33,25 @@
     <td>
       <a target="_blank" href="https://huly.io">
         <picture>
-          <source media="(prefers-color-scheme: dark)" srcset="/juliangarnier/anime/raw/master/documentation/assets/assets/sponsors/huly-logomark.svg" width="256">
-          <img align="center" src="/juliangarnier/anime/raw/master/documentation/assets/assets/sponsors/huly-logomark-dark.svg" width="256">
+          <source media="(prefers-color-scheme: dark)" srcset="./documentation/assets/sponsors/huly-logomark.svg">
+          <img align="center" src="./documentation/assets/assets/sponsors/huly-logomark-dark.svg" width="128">
         </picture>
       </a>
     </td>
     <td>
       <a target="_blank" href="https://github.com/sponsors/juliangarnier">
         <picture>
-          <source media="(prefers-color-scheme: dark)" srcset="/juliangarnier/anime/raw/master/documentation/assets/assets/sponsors/placeholder.svg" width="256">
-          <img align="center" src="/juliangarnier/anime/raw/master/documentation/assets/assets/sponsors/placeholder-dark.svg" width="256">
+          <source media="(prefers-color-scheme: dark)" srcset="./documentation/assets/sponsors/placeholder.svg">
+          <img align="center" src="./documentation/assets/assets/sponsors/placeholder-dark.svg" width="128">
         </picture>
       </a>
     </td>
   </tr>
   <tr>
-    <td>
+    <td align="center">
       <a target="_blank" href="https://huly.io">Huly</a>
     </td>
-    <td>
+    <td align="center">
       <a target="_blank" href="https://github.com/sponsors/juliangarnier">Your logo here</a>
     </td>
   </tr>
