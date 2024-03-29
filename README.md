@@ -12,9 +12,9 @@
 <h4 align="center">JavaScript animation engine | <a href="https://animejs.com" target="_blank">animejs.com</a></h4>
 
 <p align="center">
-  ![NPM Downloads](https://img.shields.io/npm/dm/animejs?style=flat-square&logo=npm)
-  ![jsDelivr hits (npm)](https://img.shields.io/jsdelivr/npm/hm/animejs?style=flat-square&logo=jsdeliver)
-  ![GitHub Sponsors](https://img.shields.io/github/sponsors/juliangarnier?style=flat-square&logo=github)
+  <img alt="NPM Downloads" src="https://img.shields.io/npm/dm/animejs?style=flat-square&logo=npm">
+  <img alt="jsDelivr hits (npm)" src="https://img.shields.io/jsdelivr/npm/hm/animejs?style=flat-square&logo=jsdeliver">
+  <img alt="GitHub Sponsors" src="https://img.shields.io/github/sponsors/juliangarnier?style=flat-square&logo=github">
 </p>
 
 <blockquote align="center">
