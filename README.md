@@ -9,6 +9,15 @@
   anime.js
 </h1>
 
+<h1 align="center">
+  <picture align="center">
+    <source media="(prefers-color-scheme: dark)" srcset="./website/assets/images/readme/animejs-v4-logo-animation-dark.gif">
+    <img align="center" alt="Anime.js V4 logo animation" src="./website/assets/images/readme/animejs-v4-logo-animation.gif" width="560">
+  </picture>
+  <br>
+  anime.js
+</h1>
+
 <h4 align="center">JavaScript animation engine | <a href="https://animejs.com" target="_blank">animejs.com</a></h4>
 
 <p align="center">
@@ -25,6 +34,37 @@
 <p align="center">
   <a href="#getting-started">Getting started</a>&nbsp;|&nbsp;<a href="#documentation">Documentation</a>&nbsp;|&nbsp;<a href="#demos-and-examples">Demos and examples</a>&nbsp;|&nbsp;<a href="#browser-support">Browser support</a>
 </p>
+
+## Powered by
+
+<table>
+  <tr>
+    <td>
+      <a target="_blank" href="https://huly.io">
+        <picture>
+          <source media="(prefers-color-scheme: dark)" srcset="/documentation/assets/assets/sponsors/huly-logomark.svg" width="256">
+          <img align="center" src="/documentation/assets/assets/sponsors/huly-logomark-dark.svg" width="256">
+        </picture>
+      </a>
+    </td>
+    <td>
+      <a target="_blank" href="https://github.com/sponsors/juliangarnier">
+        <picture>
+          <source media="(prefers-color-scheme: dark)" srcset="/documentation/assets/assets/sponsors/placeholder.svg" width="256">
+          <img align="center" src="/documentation/assets/assets/sponsors/placeholder-dark.svg" width="256">
+        </picture>
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <a target="_blank" href="https://huly.io">Huly</a>
+    </td>
+    <td>
+      <a target="_blank" href="https://github.com/sponsors/juliangarnier">Your logo here</a>
+    </td>
+  </tr>
+</table>
 
 ## Getting started
 
