@@ -42,16 +42,16 @@
     <td>
       <a target="_blank" href="https://huly.io">
         <picture>
-          <source media="(prefers-color-scheme: dark)" srcset="/documentation/assets/assets/sponsors/huly-logomark.svg" width="256">
-          <img align="center" src="/documentation/assets/assets/sponsors/huly-logomark-dark.svg" width="256">
+          <source media="(prefers-color-scheme: dark)" srcset="/juliangarnier/anime/raw/master/documentation/assets/assets/sponsors/huly-logomark.svg" width="256">
+          <img align="center" src="/juliangarnier/anime/raw/master/documentation/assets/assets/sponsors/huly-logomark-dark.svg" width="256">
         </picture>
       </a>
     </td>
     <td>
       <a target="_blank" href="https://github.com/sponsors/juliangarnier">
         <picture>
-          <source media="(prefers-color-scheme: dark)" srcset="/documentation/assets/assets/sponsors/placeholder.svg" width="256">
-          <img align="center" src="/documentation/assets/assets/sponsors/placeholder-dark.svg" width="256">
+          <source media="(prefers-color-scheme: dark)" srcset="/juliangarnier/anime/raw/master/documentation/assets/assets/sponsors/placeholder.svg" width="256">
+          <img align="center" src="/juliangarnier/anime/raw/master/documentation/assets/assets/sponsors/placeholder-dark.svg" width="256">
         </picture>
       </a>
     </td>
