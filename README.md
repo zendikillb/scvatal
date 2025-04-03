@@ -2,8 +2,8 @@
 
 <p align="center">
   <picture align="center">
-    <source media="(prefers-color-scheme: dark)" srcset="./website/assets/images/readme/animejs-v4-logo-animation-dark.gif">
-    <img align="center" alt="Anime.js V4 logo animation" src="./website/assets/images/readme/animejs-v4-logo-animation.gif" width="560">
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/images/animejs-v4-logo-animation-dark.gif">
+    <img align="center" alt="Anime.js V4 logo animation" src="./assets/images/animejs-v4-logo-animation.gif" width="560">
   </picture>
 </p>
 
@@ -47,7 +47,7 @@ animate('.square', {
 
   </td>
   <td>
-    <img align="center" alt="Anime.js code example" src="./website/assets/images/readme/usage-example-result.gif">
+    <img align="center" alt="Anime.js code example" src="./assets/images/usage-example-result.gif">
   </td>
 </tr>
 </table>
@@ -81,24 +81,24 @@ Anime.js is 100% free and is only made possible with the help of our sponsors.
     <td>
       <a target="_blank" href="https://huly.io?ref=animejs">
         <picture>
-          <source media="(prefers-color-scheme: dark)" srcset="./documentation/assets/sponsors/huly-logomark.svg">
-          <img align="center" src="./documentation/assets/sponsors/huly-logomark-dark.svg" width="128">
+          <source media="(prefers-color-scheme: dark)" srcset="./assets/sponsors/huly-logomark.svg">
+          <img align="center" src="./assets/sponsors/huly-logomark-dark.svg" width="128">
         </picture>
       </a>
     </td>
     <td>
       <a target="_blank" href="https://clutch.io?ref=animejs">
         <picture>
-          <source media="(prefers-color-scheme: dark)" srcset="./documentation/assets/sponsors/clutch-logomark.svg">
-          <img align="center" src="./documentation/assets/sponsors/clutch-logomark-dark.svg" width="128">
+          <source media="(prefers-color-scheme: dark)" srcset="./assets/sponsors/clutch-logomark.svg">
+          <img align="center" src="./assets/sponsors/clutch-logomark-dark.svg" width="128">
         </picture>
       </a>
     </td>
     <td>
       <a target="_blank" href="https://github.com/sponsors/juliangarnier">
         <picture>
-          <source media="(prefers-color-scheme: dark)" srcset="./documentation/assets/sponsors/placeholder.svg">
-          <img align="center" src="./documentation/assets/sponsors/placeholder-dark.svg" width="128">
+          <source media="(prefers-color-scheme: dark)" srcset="./assets/sponsors/placeholder.svg">
+          <img align="center" src="./assets/sponsors/placeholder-dark.svg" width="128">
         </picture>
       </a>
     </td>
