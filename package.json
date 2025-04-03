@@ -2,7 +2,10 @@
   "name": "animejs",
   "version": "4.0.0",
   "homepage": "https://animejs.com",
-  "repository": "juliangarnier/anime",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juliangarnier/anime.git"
+  },
   "description": "JavaScript animation engine",
   "main": "lib/anime.umd.js",
   "module": "lib/anime.esm.js",
