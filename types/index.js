@@ -5712,7 +5712,7 @@ const createDraggable = (target, parameters) => new Draggable(target, parameters
 
 /**
  * @typedef {Object} ReactRef
- * @property {HTMLElement|SVGElement} [current]
+ * @property {HTMLElement|SVGElement|null} [current]
  */
 /**
  * @typedef {Object} AngularRef
