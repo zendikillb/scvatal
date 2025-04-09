@@ -19,7 +19,7 @@ Before opening a PR, follow these steps to properly build and test the project:
 
 1. Clone your fork to your computer.
 2. Install the NPM dependencies `npm i`.
-3. Modify or add .js files in src, with valid JSDoc annotations.
+3. Modify or add `.js` files in `/src`, with valid JSDoc annotations.
 4. Run `npm run dev-types` to build the `anime.esm.js` and `index.d.ts` files by watching changes in `/src`.
 5. Add the necessary tests to `/test/suites/` to the relevant file.
 6. Run `npm run test-browser` to make sure you haven't broken anything and all the tests are passing.
