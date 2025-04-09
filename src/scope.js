@@ -20,7 +20,7 @@ import {
 
 /**
  * @typedef {Object} ReactRef
- * @property {HTMLElement|SVGElement} [current]
+ * @property {HTMLElement|SVGElement|null} [current]
  */
 
 /**
