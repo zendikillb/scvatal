@@ -23,4 +23,4 @@ Before opening a PR, follow these steps to properly build and test the project:
 4. Run `npm run dev-types` to build the `anime.esm.js` and `index.d.ts` files by watching changes in `/src`.
 5. Add the necessary tests to `/test/suites/` to the relevant file.
 6. Run `npm run test-browser` to make sure you haven't broken anything and all the tests are passing.
-7. Open the PR!
+7. Create a pull request on the **[`dev`](https://github.com/juliangarnier/anime/tree/dev) branch**
