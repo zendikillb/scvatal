@@ -121,4 +121,4 @@ Help the project become sustainable by sponsoring us on <a target="_blank" href=
   </tr>
 </table>
 
-[animejs.com](https://animejs.com/) | [Documentation](https://animejs.com/documentation/) | [MIT License](LICENSE.md) | © [Julian Garnier](http://juliangarnier.com).
+© [Julian Garnier](http://juliangarnier.com) | [MIT License](LICENSE.md)
