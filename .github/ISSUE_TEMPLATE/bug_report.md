@@ -17,7 +17,9 @@ Do not post screenshots of your text editor.
 
 You can fork this [CodePen template](https://codepen.io/juliangarnier/pen/pvoGoxR) or use a similar service to provide a minimal reproduction demo so I can quickly follow the steps to reproduce your problem.
 
-Detail the steps to reproduce the behavior in the minimal reproduction demo, for example:
+## Detail the steps to reproduce the behavior in the minimal reproduction demo
+
+for example:
 1. Go to '...'
 2. Click on '....'
 3. Scroll down to '....'
