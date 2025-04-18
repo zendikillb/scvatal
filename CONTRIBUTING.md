@@ -2,7 +2,7 @@
 
 ## Bug fixes
 
-First make sure the bug you want to report or fix hasn't been already reported in the [GitHub issues](https://github.com/juliangarnier/anime/issues?q=is%3Aissue+label%3Abug).
+First make sure the bug you want to report or fix hasn't been already reported.
 If the bug you want to work on doesn't have a related issue, [open one](https://github.com/juliangarnier/anime/issues/new?template=bug_report.md), and attach the "Bug" label.
 
 ## New features
