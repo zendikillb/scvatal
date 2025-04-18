@@ -1,7 +1,7 @@
 # Contributing
 
 > [!CAUTION]
-> Issues and PRs created without following the guidelines listed below will be closed until they match the expected template.
+> Issues and PRs created without following the guidelines listed below **will be closed** until they match the expected template.
 
 ## Bug Report
 Open a [bug report issue](https://github.com/juliangarnier/anime/issues/new?template=bug_report.md) by following the bug report template and attaching the "Bug" label.
@@ -24,3 +24,7 @@ Before opening a PR, follow these steps to properly build and test the project:
 6. Add the necessary tests to the relevant file in `/test/suites/`.
 7. Run `npm run test-browser` to make sure you haven't broken anything and all tests are passing.
 8. Create a pull request on the **[`dev`](https://github.com/juliangarnier/anime/tree/dev)** branch.
+
+## Consider supporting this project via GitHub Sponsors
+
+I couldn't respond to issues and fix bugs without the support of my sponsors. If you find Anime.js valuable in your work, please consider becoming a sponsor via [GitHub Sponsors](https://github.com/sponsors/juliangarnier)! ❤️
