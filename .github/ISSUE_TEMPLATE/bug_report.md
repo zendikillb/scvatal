@@ -11,7 +11,7 @@ assignees: ''
 
 A clear and concise description of what the bug is.
 If you're using an LLM to write the issue, please make sure that the text actually means something, and please, keep it short, LLMs tend to write longer texts than needed.
-Do not post screenshots of your text editor.
+Do not post screenshots of your text editor, paste the code directly in the issue with the adequate code formatting.
 
 ## Provide a minimal reproduction demo of the bug
 
