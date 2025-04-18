@@ -1,26 +1,26 @@
 # Contributing
 
-## Bug fixes
+> [!CAUTION]
+> Issues and PRs created without following the guidelines listed below will be closed until they match the expected template.
 
-First make sure the bug you want to report or fix hasn't been already reported.
-If the bug you want to work on doesn't have a related issue, [open one](https://github.com/juliangarnier/anime/issues/new?template=bug_report.md), and attach the "Bug" label.
+## Bug Report
+Open a [bug report issue](https://github.com/juliangarnier/anime/issues/new?template=bug_report.md) by following the bug report template and attaching the "Bug" label.
 
-## New features
-
-Before adding any features, open a [Feature Proposal](https://github.com/juliangarnier/anime/issues/new?template=feature_request.md) and attach the "Feature Proposal" label.
-This will allow us to discuss the necessity of the feature, API design and implementation details before you invest time working on it.
+## New Features Proposal
+Open a [feature proposal issue](https://github.com/juliangarnier/anime/issues/new?template=feature_request.md) by following the feature proposal template and attaching the "Feature Proposal" label.
 
 ## Development
-
 Anime.js is written in JavaScript and the type definitions are generated from [JSDoc](https://jsdoc.app/) annotations.
-JSDoc types used globally in the project are defined in the `src/types.js` file, otherwise JSDoc types should be defined straight in their corresponding file.
+
+JSDoc types used globally in the project are defined in the `src/types.js` file. Otherwise, JSDoc types should be defined directly in their corresponding file.
 
 Before opening a PR, follow these steps to properly build and test the project:
 
-1. Clone your fork to your computer.
-2. Install the NPM dependencies `npm i`.
-3. Modify or add `.js` files in `/src`, with valid JSDoc annotations.
-4. Run `npm run dev-types` to build the `anime.esm.js` and `index.d.ts` files by watching changes in `/src`.
-5. Add the necessary tests to `/test/suites/` to the relevant file.
-6. Run `npm run test-browser` to make sure you haven't broken anything and all the tests are passing.
-7. Create a pull request on the **[`dev`](https://github.com/juliangarnier/anime/tree/dev)** branch.
+1. Make sure your PR has a bug report or new feature proposal issue associated with it. If not, create one.
+2. Clone your fork to your computer.
+3. Install the NPM dependencies with `npm i`.
+4. Modify or add `.js` files in `/src`, with valid JSDoc annotations.
+5. Run `npm run dev-types` to build the `anime.esm.js` and `index.d.ts` files by watching changes in `/src`.
+6. Add the necessary tests to the relevant file in `/test/suites/`.
+7. Run `npm run test-browser` to make sure you haven't broken anything and all tests are passing.
+8. Create a pull request on the **[`dev`](https://github.com/juliangarnier/anime/tree/dev)** branch.
