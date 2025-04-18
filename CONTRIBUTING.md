@@ -3,11 +3,14 @@
 > [!CAUTION]
 > Issues and PRs created without following the guidelines listed below **will be closed** until they match the expected template.
 
-## Bug Report
+## Bug report
 Open a [bug report issue](https://github.com/juliangarnier/anime/issues/new?template=bug_report.md) by following the bug report template and attaching the "Bug" label.
 
-## New Features Proposal
+## New features proposal
 Open a [feature proposal issue](https://github.com/juliangarnier/anime/issues/new?template=feature_request.md) by following the feature proposal template and attaching the "Feature Proposal" label.
+
+## Question
+If you have a question not related to a bug or a new feature, do not create an issue, but start a [Q&A discussion](https://github.com/juliangarnier/anime/discussions/new?category=q-a) instead.
 
 ## Development
 Anime.js is written in JavaScript and the type definitions are generated from [JSDoc](https://jsdoc.app/) annotations.
