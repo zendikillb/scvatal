@@ -7,10 +7,6 @@ assignees: ''
 
 ---
 
-**Make sure you're using an up-to-date version of Anime.js**
-
-As a solo maintainer, I can't provide support for outdated versions of Anime.js.
-
 **Describe the bug**
 
 A clear and concise description of what the bug is.
@@ -39,7 +35,3 @@ Let me know which OS and browser version you're using.
  - OS: [e.g. macOS]
  - Browser [e.g. chrome, safari]
  - Version [e.g. 22]
-
-**Consider supporting this project via GitHub Sponsors**
-
-I couldn't respond to issues and fix bugs without the support of my sponsors. If you find Anime.js valuable in your work, please consider becoming a sponsor via [GitHub Sponsors](https://github.com/sponsors/juliangarnier)! ❤️
