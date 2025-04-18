@@ -19,7 +19,7 @@ You can fork this [CodePen template](https://codepen.io/juliangarnier/pen/pvoGox
 
 ## Detail the steps to reproduce the behavior in the minimal reproduction demo
 
-for example:
+For example:
 1. Go to '...'
 2. Click on '....'
 3. Scroll down to '....'
