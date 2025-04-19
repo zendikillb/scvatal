@@ -11,6 +11,26 @@ import {
 
 suite('WAAPI', () => {
 
+  // Test fore
+
+  CSS.registerProperty({
+    name: '--translateX',
+    syntax: '<length-percentage>',
+    inherits: false,
+    initialValue: '0px'
+  });
+
+  test('Calling registerProperty on transforms should not conflict with the built-in one', resolve => {
+    waapi.animate('#target-id', {
+      scale: 1.5,
+      duration: 10,
+      onComplete: self => {
+        expect(self.completed).to.equal(true);
+        resolve();
+      }
+    })
+  });
+
   test('Animate multiple elements', resolve => {
     const targets = utils.$('.target-class');
     const animation = waapi.animate(targets, {

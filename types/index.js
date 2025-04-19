@@ -3227,6 +3227,8 @@ const validIndividualTransforms = [...transformsShorthands, ...validTransforms.f
 // Setting it to true in case CSS.registerProperty is not supported will automatically skip the registration and fallback to no animation
 let transformsPropertiesRegistered = isBrowser && (isUnd(CSS) || !Object.hasOwnProperty.call(CSS, 'registerProperty'));
 const registerTransformsProperties = () => {
+    if (transformsPropertiesRegistered)
+        return;
     validTransforms.forEach(t => {
         const isSkew = stringStartsWith(t, 'skew');
         const isScale = stringStartsWith(t, 'scale');
@@ -3234,12 +3236,15 @@ const registerTransformsProperties = () => {
         const isTranslate = stringStartsWith(t, 'translate');
         const isAngle = isRotate || isSkew;
         const syntax = isAngle ? '<angle>' : isScale ? "<number>" : isTranslate ? "<length-percentage>" : "*";
-        CSS.registerProperty({
-            name: '--' + t,
-            syntax,
-            inherits: false,
-            initialValue: isTranslate ? '0px' : isAngle ? '0deg' : isScale ? '1' : '0',
-        });
+        try {
+            CSS.registerProperty({
+                name: '--' + t,
+                syntax,
+                inherits: false,
+                initialValue: isTranslate ? '0px' : isAngle ? '0deg' : isScale ? '1' : '0',
+            });
+        }
+        catch { }
     });
     transformsPropertiesRegistered = true;
 };
@@ -3357,8 +3362,7 @@ class WAAPIAnimation {
     constructor(targets, params) {
         if (globals.scope)
             globals.scope.revertibles.push(this);
-        if (!transformsPropertiesRegistered)
-            registerTransformsProperties();
+        registerTransformsProperties();
         const parsedTargets = registerTargets(targets);
         const targetsLength = parsedTargets.length;
         if (!targetsLength) {
