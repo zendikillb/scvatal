@@ -246,4 +246,42 @@ suite('WAAPI', () => {
     utils.remove(targets, null, 'opacity');
   });
 
+  test('WAAPI ease cache should not cache functions', () => {
+    const [ $target1, $target2 ] = utils.$('.target-class');
+    const animation1 = waapi.animate($target1, {
+      opacity: 0,
+      autoplay: false,
+      duration: 10,
+      ease: eases.out(1),
+    });
+    const animation2 = waapi.animate($target2, {
+      opacity: 0,
+      autoplay: false,
+      duration: 10,
+      ease: eases.out(4),
+    });
+    animation1.seek(5);
+    animation2.seek(5);
+    expect(utils.get($target1, 'opacity')).to.not.equal(utils.get($target2, 'opacity'));
+  });
+
+  test('WAAPI ease cache should cache strings', () => {
+    const [ $target1, $target2 ] = utils.$('.target-class');
+    const animation1 = waapi.animate($target1, {
+      opacity: 0,
+      autoplay: false,
+      duration: 10,
+      ease: 'out(1)',
+    });
+    const animation2 = waapi.animate($target2, {
+      opacity: 0,
+      autoplay: false,
+      duration: 10,
+      ease: 'out(4)',
+    });
+    animation1.seek(5);
+    animation2.seek(5);
+    expect(utils.get($target1, 'opacity')).to.not.equal(utils.get($target2, 'opacity'));
+  });
+
 });

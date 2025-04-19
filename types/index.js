@@ -3154,6 +3154,7 @@ const parseWAAPIEasing = (ease) => {
             if (isFnc(parsed))
                 parsedEase = parsed === none ? 'linear' : easingToLinear(parsed);
         }
+        WAAPIEasesLookups[ease] = parsedEase;
     }
     else if (isFnc(ease)) {
         const easing = easingToLinear(ease);
@@ -3163,7 +3164,7 @@ const parseWAAPIEasing = (ease) => {
     else if ( /** @type {Spring} */(ease).ease) {
         parsedEase = easingToLinear(/** @type {Spring} */ (ease).ease);
     }
-    return WAAPIEasesLookups[ease] = parsedEase;
+    return parsedEase;
 };
 /**
  * @typedef {String|Number|Array<String>|Array<Number>} WAAPITweenValue
