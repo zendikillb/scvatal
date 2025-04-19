@@ -6,7 +6,7 @@ import fs from 'fs';
 import path from 'path';
 
 const inputPath = 'src/anime.js';
-const inputPathGUI = 'src/gui/gui.js';
+// const inputPathGUI = 'src/gui/gui.js';
 const outputName = 'anime';
 const jsDocTypes = fs.readFileSync('./src/types.js', 'utf-8').split('/* Exports */')[1];
 
@@ -119,15 +119,15 @@ tasks.push( // ESM
   },
 );
 
-if (!process.env.release) {
-  tasks.push( // GUI ESM
-    {
-      input: inputPathGUI,
-      output: { file: 'lib/gui/index.js', format: 'esm', banner: GUIBanner('ESM', true) },
-      plugins: [prependTypes, cleanup]
-    },
-  );
-}
+// if (!process.env.release) {
+//   tasks.push( // GUI ESM
+//     {
+//       input: inputPathGUI,
+//       output: { file: 'lib/gui/index.js', format: 'esm', banner: GUIBanner('ESM', true) },
+//       plugins: [prependTypes, cleanup]
+//     },
+//   );
+// }
 
 if (process.env.types) {
   tasks.push( // TYPES
