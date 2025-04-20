@@ -11,8 +11,6 @@ import {
 
 suite('WAAPI', () => {
 
-  // Test fore
-
   CSS.registerProperty({
     name: '--translateX',
     syntax: '<length-percentage>',
@@ -29,6 +27,21 @@ suite('WAAPI', () => {
         resolve();
       }
     })
+  });
+
+  test('Calling .complete() on an animation should trigger the .then() Promise', resolve => {
+    const instance = waapi.animate('#target-id', {
+      scale: 1.5,
+      duration: 500,
+      autoplay: false,
+    });
+    instance.then(self => {
+      expect(self.completed).to.equal(true);
+      resolve();
+    });
+    setTimeout(() => {
+      instance.complete();
+    }, 10);
   });
 
   test('Animate multiple elements', resolve => {
@@ -99,24 +112,24 @@ suite('WAAPI', () => {
   test('Seek an animation', () => {
     const targets = utils.$('.target-class');
     const animation = waapi.animate(targets, {
-      transform: `translateX(100px)`,
+      translate: `100px`,
       duration: 10,
       autoplay: false,
       ease: 'linear',
     });
     expect(animation.currentTime).to.equal(0);
     animation.seek(5).commitStyles();
-    expect(utils.get(targets[0], 'x')).to.equal('50px');
+    expect(utils.get(targets[0], 'translate')).to.equal('50px');
     expect(animation.currentTime).to.equal(5);
     animation.seek(animation.duration).commitStyles();
     expect(animation.currentTime).to.equal(animation.duration);
-    expect(utils.get(targets[0], 'x')).to.equal('100px');
+    expect(utils.get(targets[0], 'translate')).to.equal('100px');
   });
 
   test('Set and get progress on an animation', () => {
     const targets = utils.$('.target-class');
     const animation = waapi.animate(targets, {
-      transform: `translateX(100px)`,
+      translate: `100px`,
       duration: 10,
       autoplay: false,
       ease: 'linear',
@@ -124,11 +137,11 @@ suite('WAAPI', () => {
     expect(animation.progress).to.equal(0);
     animation.progress = .5;
     animation.commitStyles();
-    expect(utils.get(targets[0], 'x')).to.equal('50px');
+    expect(utils.get(targets[0], 'translate')).to.equal('50px');
     expect(animation.progress).to.equal(.5);
     animation.progress = 1;
     animation.commitStyles();
-    expect(utils.get(targets[0], 'x')).to.equal('100px');
+    expect(utils.get(targets[0], 'translate')).to.equal('100px');
   });
 
   test('Individual transforms', resolve => {

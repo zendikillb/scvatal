@@ -3518,7 +3518,14 @@ class WAAPIAnimation {
     /** @param {Number} time */
     set currentTime(time) {
         const t = time * (globals.timeScale === 1 ? 1 : K);
-        this.forEach(anim => anim.currentTime = t);
+        this.forEach(anim => {
+            // Make sure the animation playState is not 'paused' in order to properly trigger an onfinish callback.
+            // The "paused" play state supersedes the "finished" play state; if the animation is both paused and finished, the "paused" state is the one that will be reported.
+            // https://developer.mozilla.org/en-US/docs/Web/API/Animation/finish_event
+            if (t >= this.duration)
+                anim.play();
+            anim.currentTime = t;
+        });
     }
     get progress() {
         return this.currentTime / this.duration;
