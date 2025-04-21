@@ -42,6 +42,7 @@
 /** @typedef {JSAnimation|Timeline} Renderable */
 /** @typedef {Timer|Renderable} Tickable */
 /** @typedef {Timer&JSAnimation&Timeline} CallbackArgument */
+/** @typedef {import('./draggable.js').DraggableParams} DraggableParams */
 /** @typedef {import('./animatable.js').Animatable|Tickable|Draggable|ScrollObserver|Scope} Revertible */
 
 /**
