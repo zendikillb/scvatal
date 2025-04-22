@@ -5677,6 +5677,7 @@ class Draggable {
         this.overshootXTicker.revert();
         this.overshootYTicker.revert();
         this.resizeTicker.revert();
+        this.animate.revert();
         return this;
     }
     /**
