@@ -432,7 +432,7 @@ export class Draggable {
     this.canScroll = false;
     this.enabled = false;
     this.initialized = false;
-    this.activeProp = this.disabled[0] ? yProp : xProp;
+    this.activeProp = this.disabled[1] ? xProp : yProp;
     this.animate.animations[this.activeProp].onRender = () => {
       const hasUpdated = this.updated;
       const hasMoved = this.grabbed && hasUpdated;

@@ -1,6 +1,6 @@
 /**
  * anime.js - ESM
- * @version v4.0.1
+ * @version v4.0.2
  * @author Julian Garnier
  * @license MIT
  * @copyright (c) 2025 Julian Garnier
@@ -137,7 +137,7 @@ const globals = {
     /** @type {Number} */
     tickThreshold: 200,
 };
-const globalVersions = { version: '4.0.1', engine: null };
+const globalVersions = { version: '4.0.2', engine: null };
 if (isBrowser) {
     if (!win.AnimeJS)
         win.AnimeJS = [];
@@ -4897,7 +4897,7 @@ class Draggable {
         this.canScroll = false;
         this.enabled = false;
         this.initialized = false;
-        this.activeProp = this.disabled[0] ? yProp : xProp;
+        this.activeProp = this.disabled[1] ? xProp : yProp;
         this.animate.animations[this.activeProp].onRender = () => {
             const hasUpdated = this.updated;
             const hasMoved = this.grabbed && hasUpdated;
