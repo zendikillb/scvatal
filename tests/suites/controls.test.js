@@ -642,18 +642,37 @@ suite('Controls', () => {
 
   test('Stretch a timer', () => {
     const timer1 = createTimer({
-      duration: 100,
-      autoplay: false
+      duration: 1273,
+      autoplay: false,
     });
-    expect(timer1.duration).to.equal(100);
-    timer1.stretch(600);
-    expect(timer1.duration).to.equal(600);
-    timer1.stretch(30);
-    expect(timer1.duration).to.equal(30);
+    expect(timer1.duration).to.equal(1273);
+    for (let i = 0, l = 9999; i < l; i++) {
+      const newTime = 1 + i;
+      timer1.stretch(newTime);
+      expect(timer1.duration).to.equal(newTime);
+      expect(timer1.iterationDuration).to.equal(newTime);
+    }
     timer1.stretch(0);
     expect(timer1.duration).to.equal(minValue);
-    timer1.stretch(30);
-    expect(timer1.duration).to.equal(30);
+    expect(timer1.iterationDuration).to.equal(minValue);
+  });
+
+  test('Stretch a looped timer', () => {
+    const timer1 = createTimer({
+      duration: 1273,
+      autoplay: false,
+      loop: 3,
+    });
+    expect(timer1.duration).to.equal(1273 * 4);
+    for (let i = 0, l = 9999; i < l; i++) {
+      const newTime = 1 + i;
+      timer1.stretch(newTime);
+      expect(timer1.duration).to.equal(newTime);
+      expect(timer1.iterationDuration).to.equal(newTime / timer1.iterationCount);
+    }
+    timer1.stretch(0);
+    expect(timer1.duration).to.equal(minValue);
+    expect(timer1.iterationDuration).to.equal(minValue);
   });
 
   test('Stretch an animation', () => {

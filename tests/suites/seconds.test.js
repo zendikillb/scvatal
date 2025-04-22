@@ -53,28 +53,44 @@ suite('Seconds', () => {
 
   });
 
-  test('Stretch a timer', () => {
-
+  test('Stretch a looped timer', () => {
     engine.timeUnit = 's';
-
     const timer1 = createTimer({
       duration: .1,
-      autoplay: false
+      autoplay: false,
+      loop: 0,
     });
     expect(timer1.duration).to.equal(.1);
-    timer1.stretch(.6);
-    expect(timer1.duration).to.equal(.6);
-    timer1.stretch(.3);
-    expect(timer1.duration).to.equal(.3);
+    for (let i = 1, l = 9999; i < l; i++) {
+      const newTime = +(i * .1).toFixed(1);
+      timer1.stretch(newTime);
+      expect(timer1.duration).to.equal(newTime);
+      expect(timer1.iterationDuration).to.equal(newTime);
+    }
     timer1.stretch(0);
     expect(timer1.duration).to.equal(minValue);
     expect(timer1.iterationDuration).to.equal(minValue);
-    timer1.stretch(.3);
-    expect(timer1.duration).to.equal(.3);
-    expect(timer1.iterationDuration).to.equal(.3);
-
     engine.timeUnit = 'ms';
+  });
 
+  test('Stretch a looped timer', () => {
+    engine.timeUnit = 's';
+    const timer1 = createTimer({
+      duration: .1,
+      autoplay: false,
+      loop: 3,
+    });
+    expect(timer1.duration).to.equal(.1 * 4);
+    for (let i = 1, l = 9999; i < l; i++) {
+      const newTime = +(i * .1).toFixed(1);
+      timer1.stretch(newTime);
+      expect(timer1.duration).to.equal(newTime);
+      expect(timer1.iterationDuration).to.equal(newTime / timer1.iterationCount);
+    }
+    timer1.stretch(0);
+    expect(timer1.duration).to.equal(minValue);
+    expect(timer1.iterationDuration).to.equal(minValue);
+    engine.timeUnit = 'ms';
   });
 
   test('Stretch an animation', () => {

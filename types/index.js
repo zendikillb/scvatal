@@ -253,7 +253,7 @@ const clampInfinity = v => v === Infinity ? maxValue : v === -Infinity ? -1e12 :
  * @param  {Number} v
  * @return {Number}
  */
-const clampZero = v => v < minValue ? minValue : v;
+const normalizeTime = v => v <= minValue ? minValue : clampInfinity(round(v, 11));
 // Arrays
 /**
  * @template T
@@ -2093,12 +2093,13 @@ class Timer extends Clock {
      */
     stretch(newDuration) {
         const currentDuration = this.duration;
-        if (currentDuration === clampZero(newDuration))
+        const normlizedDuration = normalizeTime(newDuration);
+        if (currentDuration === normlizedDuration)
             return this;
         const timeScale = newDuration / currentDuration;
         const isSetter = newDuration <= minValue;
-        this.duration = isSetter ? minValue : clampZero(clampInfinity(round(currentDuration * timeScale, 12)));
-        this.iterationDuration = isSetter ? minValue : clampZero(clampInfinity(round(this.iterationDuration * timeScale, 12)));
+        this.duration = isSetter ? minValue : normlizedDuration;
+        this.iterationDuration = isSetter ? minValue : normalizeTime(this.iterationDuration * timeScale);
         this._offset *= timeScale;
         this._delay *= timeScale;
         this._loopDelay *= timeScale;
@@ -3051,14 +3052,14 @@ class JSAnimation extends Timer {
      */
     stretch(newDuration) {
         const currentDuration = this.duration;
-        if (currentDuration === clampZero(newDuration))
+        if (currentDuration === normalizeTime(newDuration))
             return this;
         const timeScale = newDuration / currentDuration;
         // NOTE: Find a better way to handle the stretch of an animation after stretch = 0
         forEachChildren(this, (/** @type {Tween} */ tween) => {
             // Rounding is necessary here to minimize floating point errors
-            tween._updateDuration = clampZero(round(tween._updateDuration * timeScale, 12));
-            tween._changeDuration = clampZero(round(tween._changeDuration * timeScale, 12));
+            tween._updateDuration = normalizeTime(tween._updateDuration * timeScale);
+            tween._changeDuration = normalizeTime(tween._changeDuration * timeScale);
             tween._currentTime *= timeScale;
             tween._startTime *= timeScale;
             tween._absoluteStartTime *= timeScale;
@@ -4272,16 +4273,13 @@ class Timeline extends Timer {
      */
     stretch(newDuration) {
         const currentDuration = this.duration;
-        if (currentDuration === clampZero(newDuration))
+        if (currentDuration === normalizeTime(newDuration))
             return this;
         const timeScale = newDuration / currentDuration;
         const labels = this.labels;
-        forEachChildren(this, (/** @type {JSAnimation} */ child) => {
-            child.stretch(child.duration * timeScale);
-        });
-        for (let labelName in labels) {
+        forEachChildren(this, (/** @type {JSAnimation} */ child) => child.stretch(child.duration * timeScale));
+        for (let labelName in labels)
             labels[labelName] *= timeScale;
-        }
         return super.stretch(newDuration);
     }
     /**

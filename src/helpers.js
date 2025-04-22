@@ -84,7 +84,6 @@ export const atan2 = Math.atan2;
 export const PI = Math.PI;
 export const _round = Math.round;
 
-
 /**
  * @param  {Number} v
  * @param  {Number} min
@@ -133,7 +132,7 @@ export const clampInfinity = v => v === Infinity ? maxValue : v === -Infinity ? 
  * @param  {Number} v
  * @return {Number}
  */
-export const clampZero = v => v < minValue ? minValue : v;
+export const normalizeTime = v => v <= minValue ? minValue : clampInfinity(round(v, 11));
 
 // Arrays
 

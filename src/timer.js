@@ -15,7 +15,7 @@ import {
   forEachChildren,
   clampInfinity,
   round,
-  clampZero,
+  normalizeTime,
   isFnc,
   clamp,
   floor,
@@ -442,11 +442,12 @@ export class Timer extends Clock {
    */
   stretch(newDuration) {
     const currentDuration = this.duration;
-    if (currentDuration === clampZero(newDuration)) return this;
+    const normlizedDuration = normalizeTime(newDuration);
+    if (currentDuration === normlizedDuration) return this;
     const timeScale = newDuration / currentDuration;
     const isSetter = newDuration <= minValue;
-    this.duration = isSetter ? minValue : clampZero(clampInfinity(round(currentDuration * timeScale, 12)));
-    this.iterationDuration = isSetter ? minValue : clampZero(clampInfinity(round(this.iterationDuration * timeScale, 12)));
+    this.duration = isSetter ? minValue : normlizedDuration;
+    this.iterationDuration = isSetter ? minValue : normalizeTime(this.iterationDuration * timeScale);
     this._offset *= timeScale;
     this._delay *= timeScale;
     this._loopDelay *= timeScale;

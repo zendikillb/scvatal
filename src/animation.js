@@ -22,7 +22,7 @@ import {
   addChild,
   forEachChildren,
   clampInfinity,
-  clampZero,
+  normalizeTime,
   isNum,
   round,
 } from './helpers.js';
@@ -675,13 +675,13 @@ export class JSAnimation extends Timer {
    */
   stretch(newDuration) {
     const currentDuration = this.duration;
-    if (currentDuration === clampZero(newDuration)) return this;
+    if (currentDuration === normalizeTime(newDuration)) return this;
     const timeScale = newDuration / currentDuration;
     // NOTE: Find a better way to handle the stretch of an animation after stretch = 0
     forEachChildren(this, (/** @type {Tween} */tween) => {
       // Rounding is necessary here to minimize floating point errors
-      tween._updateDuration = clampZero(round(tween._updateDuration * timeScale, 12));
-      tween._changeDuration = clampZero(round(tween._changeDuration * timeScale, 12));
+      tween._updateDuration = normalizeTime(tween._updateDuration * timeScale);
+      tween._changeDuration = normalizeTime(tween._changeDuration * timeScale);
       tween._currentTime *= timeScale;
       tween._startTime *= timeScale;
       tween._absoluteStartTime *= timeScale;
