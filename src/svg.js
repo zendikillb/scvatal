@@ -68,10 +68,18 @@ const morphTo = (path2, precision = .33) => ($path1) => {
 }
 
 /**
- * @param {SVGGeometryElement} $el
- * @param {Number} start
- * @param {Number} end
- * @return {Proxy}
+ * @typedef {SVGGeometryElement & {
+ *   setAttribute(name: 'draw', value: `${number} ${number}`): void;
+ *   draw: `${number} ${number}`;
+ * }} DrawableSVGGeometry
+ */
+
+/**
+ * Creates a proxy that wraps an SVGGeometryElement and adds drawing functionality.
+ * @param {SVGGeometryElement} $el - The SVG element to wrap
+ * @param {number} start - Starting position (0-1)
+ * @param {number} end - Ending position (0-1)
+ * @return {DrawableSVGGeometry} - Returns a proxy that preserves the original element's type with additional 'draw' attribute functionality
  */
 function createDrawableProxy($el, start, end) {
   const strokeLineCap = getComputedStyle($el).strokeLinecap;
@@ -82,20 +90,16 @@ function createDrawableProxy($el, start, end) {
       const value = target[property];
       if (property === proxyTargetSymbol) return target;
       if (property === 'setAttribute') {
-        /** @param {any[]} args */
         return (...args) => {
           if (args[0] === 'draw') {
             const value = args[1];
             const values = value.split(' ');
             const v1 = +values[0];
             const v2 = +values[1];
-
             // TOTO: Benchmark if performing two slices is more performant than one split
-
             // const spaceIndex = value.indexOf(' ');
             // const v1 = round(+value.slice(0, spaceIndex), precision);
             // const v2 = round(+value.slice(spaceIndex + 1), precision);
-
             const os = v1 * -pathLength;
             const d1 = (v2 * pathLength) + os;
             // Prevents linecap to smear by offsetting the dasharray length by 0.01% when v2 is not at max
@@ -104,7 +108,8 @@ function createDrawableProxy($el, start, end) {
             if (strokeLineCap !== 'butt') {
               const newCap = v1 === v2 ? 'butt' : strokeLineCap;
               if (currentCap !== newCap) {
-                target.setAttribute('stroke-linecap', `${newCap}`);
+                // target.setAttribute('stroke-linecap', `${newCap}`);
+                target.style.strokeLinecap = `${newCap}`; // Apply style instead of setAttribute to properly override stylesheet styles
                 currentCap = newCap;
               }
             }
@@ -115,7 +120,6 @@ function createDrawableProxy($el, start, end) {
         };
       }
       if (isFnc(value)) {
-        /** @param {any[]} args */
         return (...args) => Reflect.apply(value, target, args);
       } else {
         return value;
@@ -126,19 +130,23 @@ function createDrawableProxy($el, start, end) {
     $el.setAttribute('pathLength', `${pathLength}`);
     proxy.setAttribute('draw', `${start} ${end}`);
   }
-  return /** @type {typeof Proxy} */(/** @type {unknown} */(proxy));
+  return /** @type {DrawableSVGGeometry} */(proxy);
 }
 
 /**
- * @param {TargetsParam} selector
- * @param {Number} [start=0]
- * @param {Number} [end=0]
- * @return {Array.<Proxy>}
+ * Creates drawable proxies for multiple SVG elements.
+ * @param {TargetsParam} selector - CSS selector, SVG element, or array of elements and selectors
+ * @param {number} [start=0] - Starting position (0-1)
+ * @param {number} [end=0] - Ending position (0-1)
+ * @return {Array<DrawableSVGGeometry>} - Array of proxied elements with drawing functionality
  */
 const createDrawable = (selector, start = 0, end = 0) => {
-  const els = /** @type {Array.<Proxy>} */((/** @type {unknown} */(parseTargets(selector))));
-  els.forEach(($el, i) => els[i] = createDrawableProxy(/** @type {SVGGeometryElement} */(/** @type {unknown} */($el)), start, end));
-  return els;
+  const els = parseTargets(selector);
+  return els.map($el => createDrawableProxy(
+    /** @type {SVGGeometryElement} */($el),
+    start,
+    end
+  ));
 };
 
 // Motion path animation

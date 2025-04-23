@@ -206,13 +206,17 @@ declare namespace svg {
     export { createMotionPath };
     export { createDrawable };
 }
+type DrawableSVGGeometry = SVGGeometryElement & {
+    setAttribute(name: "draw", value: `${number} ${number}`): void;
+    draw: `${number} ${number}`;
+};
 declare function morphTo(path2: TargetsParam, precision?: number): FunctionValue;
 declare function createMotionPath(path: TargetsParam): {
     translateX: FunctionValue;
     translateY: FunctionValue;
     rotate: FunctionValue;
 };
-declare function createDrawable(selector: TargetsParam, start?: number, end?: number): Array<ProxyConstructor>;
+declare function createDrawable(selector: TargetsParam, start?: number, end?: number): Array<DrawableSVGGeometry>;
 declare function stagger(val: number | string | [
     number | string,
     number | string
@@ -578,6 +582,7 @@ declare class DOMProxy {
     };
 }
 type DraggableParams = DraggableParams;
+type DrawableSVGGeometry = DrawableSVGGeometry;
 declare class Animatable {
     constructor(targets: TargetsParam, parameters: AnimatableParams);
     targets: (HTMLElement | SVGElement | JSTarget)[];
@@ -1017,4 +1022,4 @@ type WAAPIAnimationOptions = {
 };
 type WAAPIAnimationParams = Record<string, WAAPIKeyframeValue | WAAPIAnimationOptions | boolean | ScrollObserver | WAAPICallback | EasingParam | WAAPITweenOptions> & WAAPIAnimationOptions;
 declare function easingToLinear(fn: EasingFunction, samples?: number): string;
-export { engine, utils, svg, stagger, eases, DefaultsParams, Renderable, Tickable, CallbackArgument, DraggableParams, Revertible, EasingFunction, EaseStringParamNames, EasingParam, DOMTarget, JSTarget, Target, TargetSelector, DOMTargetSelector, DOMTargetsParam, DOMTargetsArray, JSTargetsParam, JSTargetsArray, TargetsParam, TargetsArray, FunctionValue, TweenModifier, ColorArray, Callback, TickableCallbacks, RenderableCallbacks, Tween, TweenDecomposedValue, TweenPropertySiblings, TweenLookups, TweenReplaceLookups, TweenAdditiveLookups, TimerOptions, TimerParams, TweenParamValue, TweenPropValue, TweenComposition, TweenParamsOptions, TweenValues, TweenKeyValue, ArraySyntaxValue, TweenOptions, TweenObjectValue, PercentageKeyframeOptions, PercentageKeyframeParams, PercentageKeyframes, DurationKeyframes, AnimationOptions, AnimationParams, TimelineOptions, TimelineParams, AnimatablePropertySetter, AnimatablePropertyGetter, AnimatableProperty, AnimatableObject, AnimatablePropertyParamsOptions, AnimatableParams, createTimer, Timer, animate, JSAnimation, createTimeline, Timeline, createAnimatable, Animatable, createDraggable, Draggable, createScope, Scope, onScroll, ScrollObserver, scrollContainers, createSpring, Spring, waapi, WAAPIAnimation };
+export { engine, utils, svg, stagger, eases, DefaultsParams, Renderable, Tickable, CallbackArgument, DraggableParams, DrawableSVGGeometry, Revertible, EasingFunction, EaseStringParamNames, EasingParam, DOMTarget, JSTarget, Target, TargetSelector, DOMTargetSelector, DOMTargetsParam, DOMTargetsArray, JSTargetsParam, JSTargetsArray, TargetsParam, TargetsArray, FunctionValue, TweenModifier, ColorArray, Callback, TickableCallbacks, RenderableCallbacks, Tween, TweenDecomposedValue, TweenPropertySiblings, TweenLookups, TweenReplaceLookups, TweenAdditiveLookups, TimerOptions, TimerParams, TweenParamValue, TweenPropValue, TweenComposition, TweenParamsOptions, TweenValues, TweenKeyValue, ArraySyntaxValue, TweenOptions, TweenObjectValue, PercentageKeyframeOptions, PercentageKeyframeParams, PercentageKeyframes, DurationKeyframes, AnimationOptions, AnimationParams, TimelineOptions, TimelineParams, AnimatablePropertySetter, AnimatablePropertyGetter, AnimatableProperty, AnimatableObject, AnimatablePropertyParamsOptions, AnimatableParams, createTimer, Timer, animate, JSAnimation, createTimeline, Timeline, createAnimatable, Animatable, createDraggable, Draggable, createScope, Scope, onScroll, ScrollObserver, scrollContainers, createSpring, Spring, waapi, WAAPIAnimation };

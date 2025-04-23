@@ -106,6 +106,22 @@ suite('SVG', () => {
   //   });
   // });
 
+  test('stroke-linecap "round" path should be set to "butt" when hidden', () => {
+    const [ $path ] = utils.$('#tests path')
+    const [ $drawablePath ] = svg.createDrawable('#tests path');
+    expect(getComputedStyle($path).strokeLinecap).to.equal('butt');
+    $drawablePath.setAttribute('draw', '0 .5');
+    expect(getComputedStyle($path).strokeLinecap).to.equal('round');
+    $drawablePath.setAttribute('draw', '0 1');
+    expect(getComputedStyle($path).strokeLinecap).to.equal('round');
+    $drawablePath.setAttribute('draw', '.5 1');
+    expect(getComputedStyle($path).strokeLinecap).to.equal('round');
+    $drawablePath.setAttribute('draw', '1 1');
+    expect(getComputedStyle($path).strokeLinecap).to.equal('butt');
+    $drawablePath.setAttribute('draw', '.25 .25');
+    expect(getComputedStyle($path).strokeLinecap).to.equal('butt');
+  });
+
   test('SVG Filters', () => {
     // Filters tests
     /** @type {HTMLElement} */

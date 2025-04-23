@@ -15,7 +15,7 @@ function generateLines(numberOfLines) {
       <g id="lines" fill="none" fill-rule="evenodd">`;
   for (let i = 0; i < numberOfLines; i++) {
     const x = margin + i * spacing;
-    svgContent += `<line x1="${x}" y1="${margin}" x2="${x}" y2="${svgHeight - margin}" class="line-v" stroke="#A4FF4F" stroke-linecap="butt" stroke-linejoin="round" stroke-width="10"></line>`;
+    svgContent += `<line x1="${x}" y1="${margin}" x2="${x}" y2="${svgHeight - margin}" class="line-v" stroke="#A4FF4F"></line>`;
   }
 
   svgContent += `</g></svg>`;
@@ -36,7 +36,7 @@ function generateCircles(numberOfCircles) {
 
   for (let i = 0; i < numberOfCircles; i++) {
     const radius = (i + 1) * step;
-    svgContent += `<circle class="circle" stroke="#A4FF4F" stroke-linecap="butt" stroke-linejoin="round" stroke-width="10" cx="${centerX}" cy="${centerY}" r="${radius}"></circle>`;
+    svgContent += `<circle class="circle" stroke="#A4FF4F" stroke-linecap="round" stroke-linejoin="round" stroke-width="10" cx="${centerX}" cy="${centerY}" r="${radius}"></circle>`;
   }
 
   svgContent += `</g></svg>`;
