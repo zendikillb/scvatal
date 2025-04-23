@@ -18,7 +18,7 @@ suite('SVG', () => {
     const polylineEl = document.querySelector('#polyline');
     const rectEl = document.querySelector('#rect');
 
-    animate(svg.createDrawable(['line', 'circle', 'polygon', 'polyline', 'rect', 'path']), {
+    animate(svg.createDrawable(['#tests line', '#tests circle', '#tests polygon', '#tests polyline', '#tests rect', '#tests path']), {
       draw: '0 1',
       ease: 'inOutSine',
       translateX: [-100, 0],
