@@ -1112,6 +1112,22 @@ const morphTo = (path2, precision = .33) => ($path1) => {
     return [v1, v2];
 };
 /**
+ * @param {SVGGeometryElement} [$el]
+ * @return {Number}
+ */
+const getScaleFactor = $el => {
+    let scaleFactor = 1;
+    if ($el && $el.getCTM) {
+        const ctm = $el.getCTM();
+        if (ctm) {
+            const scaleX = sqrt(ctm.a * ctm.a + ctm.b * ctm.b);
+            const scaleY = sqrt(ctm.c * ctm.c + ctm.d * ctm.d);
+            scaleFactor = (scaleX + scaleY) / 2;
+        }
+    }
+    return scaleFactor;
+};
+/**
  * @typedef {SVGGeometryElement & {
  *   setAttribute(name: 'draw', value: `${number} ${number}`): void;
  *   draw: `${number} ${number}`;
@@ -1119,14 +1135,17 @@ const morphTo = (path2, precision = .33) => ($path1) => {
  */
 /**
  * Creates a proxy that wraps an SVGGeometryElement and adds drawing functionality.
- * @param {SVGGeometryElement} $el - The SVG element to wrap
+ * @param {SVGGeometryElement} $el - The SVG element to transform into a drawable
  * @param {number} start - Starting position (0-1)
  * @param {number} end - Ending position (0-1)
  * @return {DrawableSVGGeometry} - Returns a proxy that preserves the original element's type with additional 'draw' attribute functionality
  */
-function createDrawableProxy($el, start, end) {
-    const strokeLineCap = getComputedStyle($el).strokeLinecap;
+const createDrawableProxy = ($el, start, end) => {
     const pathLength = K;
+    const computedStyles = getComputedStyle($el);
+    const strokeLineCap = computedStyles.strokeLinecap;
+    // @ts-ignore
+    const $scalled = computedStyles.vectorEffect === 'non-scaling-stroke' ? $el : null;
     let currentCap = strokeLineCap;
     const proxy = new Proxy($el, {
         get(target, property) {
@@ -1144,16 +1163,15 @@ function createDrawableProxy($el, start, end) {
                         // const spaceIndex = value.indexOf(' ');
                         // const v1 = round(+value.slice(0, spaceIndex), precision);
                         // const v2 = round(+value.slice(spaceIndex + 1), precision);
-                        const os = v1 * -1e3;
-                        const d1 = (v2 * pathLength) + os;
-                        // Prevents linecap to smear by offsetting the dasharray length by 0.01% when v2 is not at max
-                        const d2 = (pathLength + ((v1 === 0 && v2 === 1) || (v1 === 1 && v2 === 0) ? 0 : 10) - d1);
-                        // Handle cases where the cap is still visible when the line is completly hidden
+                        const scaleFactor = getScaleFactor($scalled);
+                        const os = v1 * -1e3 * scaleFactor;
+                        const d1 = (v2 * pathLength * scaleFactor) + os;
+                        const d2 = (pathLength * scaleFactor +
+                            ((v1 === 0 && v2 === 1) || (v1 === 1 && v2 === 0) ? 0 : 10 * scaleFactor) - d1);
                         if (strokeLineCap !== 'butt') {
                             const newCap = v1 === v2 ? 'butt' : strokeLineCap;
                             if (currentCap !== newCap) {
-                                // target.setAttribute('stroke-linecap', `${newCap}`);
-                                target.style.strokeLinecap = `${newCap}`; // Apply style instead of setAttribute to properly override stylesheet styles
+                                target.style.strokeLinecap = `${newCap}`;
                                 currentCap = newCap;
                             }
                         }
@@ -1176,7 +1194,7 @@ function createDrawableProxy($el, start, end) {
         proxy.setAttribute('draw', `${start} ${end}`);
     }
     return /** @type {DrawableSVGGeometry} */ (proxy);
-}
+};
 /**
  * Creates drawable proxies for multiple SVG elements.
  * @param {TargetsParam} selector - CSS selector, SVG element, or array of elements and selectors
