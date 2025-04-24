@@ -178,12 +178,6 @@ class Transforms {
 }
 
 /**
- * @typedef {Object} DraggableCursorParams
- * @property {String} [onHover]
- * @property {String} [onGrab]
- */
-
-/**
  * @template {Array<Number>|DOMTargetSelector|String|Number|Boolean|Function|DraggableCursorParams} T
  * @param {T | ((draggable: Draggable) => T)} value
  * @param {Draggable} draggable
@@ -192,47 +186,6 @@ class Transforms {
 const parseDraggableFunctionParameter = (value, draggable) => value && isFnc(value) ? /** @type {Function} */(value)(draggable) : value;
 
 let zIndex = 0;
-
-/**
- * @typedef {Object} DraggableAxisParam
- * @property {String} [mapTo]
- * @property {TweenModifier} [modifier]
- * @property {TweenComposition} [composition]
- * @property {Number|Array<Number>|((draggable: Draggable) => Number|Array<Number>)} [snap]
- */
-
-/**
- * @typedef {Object} DraggableParams
- * @property {DOMTargetSelector} [trigger]
- * @property {DOMTargetSelector|Array<Number>|((draggable: Draggable) => DOMTargetSelector|Array<Number>)} [container]
- * @property {Boolean|DraggableAxisParam} [x]
- * @property {Boolean|DraggableAxisParam} [y]
- * @property {TweenModifier} [modifier]
- * @property {Number|Array<Number>|((draggable: Draggable) => Number|Array<Number>)} [snap]
- * @property {Number|Array<Number>|((draggable: Draggable) => Number|Array<Number>)} [containerPadding]
- * @property {Number|((draggable: Draggable) => Number)} [containerFriction]
- * @property {Number|((draggable: Draggable) => Number)} [releaseContainerFriction]
- * @property {Number|((draggable: Draggable) => Number)} [dragSpeed]
- * @property {Number|((draggable: Draggable) => Number)} [scrollSpeed]
- * @property {Number|((draggable: Draggable) => Number)} [scrollThreshold]
- * @property {Number|((draggable: Draggable) => Number)} [minVelocity]
- * @property {Number|((draggable: Draggable) => Number)} [maxVelocity]
- * @property {Number|((draggable: Draggable) => Number)} [velocityMultiplier]
- * @property {Number} [releaseMass]
- * @property {Number} [releaseStiffness]
- * @property {Number} [releaseDamping]
- * @property {Boolean} [releaseDamping]
- * @property {EasingParam} [releaseEase]
- * @property {Boolean|DraggableCursorParams|((draggable: Draggable) => Boolean|DraggableCursorParams)} [cursor]
- * @property {Callback<Draggable>} [onGrab]
- * @property {Callback<Draggable>} [onDrag]
- * @property {Callback<Draggable>} [onRelease]
- * @property {Callback<Draggable>} [onUpdate]
- * @property {Callback<Draggable>} [onSettle]
- * @property {Callback<Draggable>} [onSnap]
- * @property {Callback<Draggable>} [onResize]
- * @property {Callback<Draggable>} [onAfterResize]
- */
 
 export class Draggable {
   /**

@@ -15,18 +15,18 @@
 
 /**
  * @typedef {Object} DefaultsParams
- * @property {number|string} [id]
+ * @property {Number|String} [id]
  * @property {PercentageKeyframes|DurationKeyframes} [keyframes]
  * @property {EasingParam} [playbackEase]
- * @property {number} [playbackRate]
- * @property {number} [frameRate]
- * @property {number|boolean} [loop]
- * @property {boolean} [reversed]
- * @property {boolean} [alternate]
- * @property {boolean|ScrollObserver} [autoplay]
- * @property {number|FunctionValue} [duration]
- * @property {number|FunctionValue} [delay]
- * @property {number} [loopDelay]
+ * @property {Number} [playbackRate]
+ * @property {Number} [frameRate]
+ * @property {Number|Boolean} [loop]
+ * @property {Boolean} [reversed]
+ * @property {Boolean} [alternate]
+ * @property {Boolean|ScrollObserver} [autoplay]
+ * @property {Number|FunctionValue} [duration]
+ * @property {Number|FunctionValue} [delay]
+ * @property {Number} [loopDelay]
  * @property {EasingParam} [ease]
  * @property {'none'|'replace'|'blend'|import('./consts.js').compositionTypes} [composition]
  * @property {(v: any) => any} [modifier]
@@ -42,9 +42,61 @@
 /** @typedef {JSAnimation|Timeline} Renderable */
 /** @typedef {Timer|Renderable} Tickable */
 /** @typedef {Timer&JSAnimation&Timeline} CallbackArgument */
-/** @typedef {import('./draggable.js').DraggableParams} DraggableParams */
-/** @typedef {import('./svg.js').DrawableSVGGeometry} DrawableSVGGeometry */
 /** @typedef {import('./animatable.js').Animatable|Tickable|Draggable|ScrollObserver|Scope} Revertible */
+
+/**
+ * @typedef {Object} DraggableAxisParam
+ * @property {String} [mapTo]
+ * @property {TweenModifier} [modifier]
+ * @property {TweenComposition} [composition]
+ * @property {Number|Array<Number>|((draggable: Draggable) => Number|Array<Number>)} [snap]
+ */
+
+/**
+ * @typedef {Object} DraggableCursorParams
+ * @property {String} [onHover]
+ * @property {String} [onGrab]
+ */
+
+/**
+ * @typedef {Object} DraggableParams
+ * @property {DOMTargetSelector} [trigger]
+ * @property {DOMTargetSelector|Array<Number>|((draggable: Draggable) => DOMTargetSelector|Array<Number>)} [container]
+ * @property {Boolean|DraggableAxisParam} [x]
+ * @property {Boolean|DraggableAxisParam} [y]
+ * @property {TweenModifier} [modifier]
+ * @property {Number|Array<Number>|((draggable: Draggable) => Number|Array<Number>)} [snap]
+ * @property {Number|Array<Number>|((draggable: Draggable) => Number|Array<Number>)} [containerPadding]
+ * @property {Number|((draggable: Draggable) => Number)} [containerFriction]
+ * @property {Number|((draggable: Draggable) => Number)} [releaseContainerFriction]
+ * @property {Number|((draggable: Draggable) => Number)} [dragSpeed]
+ * @property {Number|((draggable: Draggable) => Number)} [scrollSpeed]
+ * @property {Number|((draggable: Draggable) => Number)} [scrollThreshold]
+ * @property {Number|((draggable: Draggable) => Number)} [minVelocity]
+ * @property {Number|((draggable: Draggable) => Number)} [maxVelocity]
+ * @property {Number|((draggable: Draggable) => Number)} [velocityMultiplier]
+ * @property {Number} [releaseMass]
+ * @property {Number} [releaseStiffness]
+ * @property {Number} [releaseDamping]
+ * @property {Boolean} [releaseDamping]
+ * @property {EasingParam} [releaseEase]
+ * @property {Boolean|DraggableCursorParams|((draggable: Draggable) => Boolean|DraggableCursorParams)} [cursor]
+ * @property {Callback<Draggable>} [onGrab]
+ * @property {Callback<Draggable>} [onDrag]
+ * @property {Callback<Draggable>} [onRelease]
+ * @property {Callback<Draggable>} [onUpdate]
+ * @property {Callback<Draggable>} [onSettle]
+ * @property {Callback<Draggable>} [onSnap]
+ * @property {Callback<Draggable>} [onResize]
+ * @property {Callback<Draggable>} [onAfterResize]
+ */
+
+/**
+ * @typedef {SVGGeometryElement & {
+ *   setAttribute(name: 'draw', value: `${number} ${number}`): void;
+ *   draw: `${number} ${number}`;
+ * }} DrawableSVGGeometry
+ */
 
 /**
  * @callback EasingFunction

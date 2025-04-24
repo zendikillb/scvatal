@@ -86,13 +86,6 @@ const getScaleFactor = $el => {
 }
 
 /**
- * @typedef {SVGGeometryElement & {
- *   setAttribute(name: 'draw', value: `${number} ${number}`): void;
- *   draw: `${number} ${number}`;
- * }} DrawableSVGGeometry
- */
-
-/**
  * Creates a proxy that wraps an SVGGeometryElement and adds drawing functionality.
  * @param {SVGGeometryElement} $el - The SVG element to transform into a drawable
  * @param {number} start - Starting position (0-1)
