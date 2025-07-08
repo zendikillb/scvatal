@@ -42,6 +42,17 @@ Help the project become sustainable by sponsoring us on <a target="_blank" href=
 </a>
 </p>
 
+### Silver sponsors
+
+<p>
+<a target="_blank" href="https://www.lambdatest.com?utm_source=animeJS&utm_medium=organic&utm_campaign=july_08&utm_term=sk&utm_content=opensource">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/sponsors/lambdatest-logomark.png">
+    <img align="center" src="./assets/sponsors/lambdatest-logomark-dark.png" width="150">
+  </picture>
+</a>
+</p>
+
 ## Usage
 
 Anime.js V4 works by importing ES modules like so:
