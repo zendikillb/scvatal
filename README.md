@@ -1,110 +1,80 @@
-# Anime.js
+# SCVATAL Landing Page
 
-<p align="center">
-  <picture align="center">
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/images/animejs-v4-logo-animation-dark.gif">
-    <img align="center" alt="Anime.js V4 logo animation" src="./assets/images/animejs-v4-logo-animation.gif" width="560">
-  </picture>
-</p>
+A modern, animated landing page for SCVATAL investment company, inspired by the Sequoia Capital design with smooth animations powered by anime.js.
 
-<p align="center">
-  <strong>
-  <em>Anime.js</em> is a fast, multipurpose and lightweight JavaScript animation library with a simple, yet powerful API.<br>
-  It works with CSS properties, SVG, DOM attributes and JavaScript Objects.
-  </strong>
-</p>
+## Features
 
-<p align="center">
-  <img alt="NPM Downloads" src="https://img.shields.io/npm/dm/animejs?style=flat-square&logo=npm">
-  <img alt="jsDelivr hits (npm)" src="https://img.shields.io/jsdelivr/npm/hm/animejs?style=flat-square&logo=jsdeliver">
-  <img alt="GitHub Sponsors" src="https://img.shields.io/github/sponsors/juliangarnier?style=flat-square&logo=github">
-</p>
+- **Modern Design**: Clean, minimalist design inspired by Sequoia Capital's landing page
+- **Smooth Animations**: Interactive animations using anime.js library
+- **Responsive**: Fully responsive design that works on all devices
+- **Interactive Elements**: Hover effects, scroll animations, and particle effects
+- **Performance Optimized**: Efficient animations that don't impact performance
 
-## Sponsors
+## Animations Included
 
-Anime.js is 100% free and is only made possible with the help of our sponsors.
-Help the project become sustainable by sponsoring us on <a target="_blank" href="https://github.com/sponsors/juliangarnier">GitHub Sponsors</a>.
+1. **Hero Text Animation**: Fade-in and slide-up animation for the main headline
+2. **Floating Particles**: Dynamic floating elements that respond to mouse movement
+3. **Scroll Effects**: Parallax scrolling and scroll-to-top functionality
+4. **Interactive Hover Effects**: Logo, navigation, and button hover animations
+5. **Form Animations**: Input focus effects and submission feedback
+6. **Particle Effects**: Click-to-create particle animations
 
-### Platinum sponsors
+## Technologies Used
 
-<p>
-<a target="_blank" href="https://huly.io/?ref=animejs">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/sponsors/huly-logomark.png">
-    <img align="center" src="./assets/sponsors/huly-logomark-dark.png" width="250">
-  </picture>
-</a>
-<a target="_blank" href="https://ice.io/?ref=animejs">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/sponsors/ice-open-network-logomark.png">
-    <img align="center" src="./assets/sponsors/ice-open-network-logomark-dark.png" width="250">
-  </picture>
-</a>
-</p>
+- HTML5
+- CSS3 (with CSS Custom Properties)
+- JavaScript (ES6+)
+- anime.js (for animations)
+- Google Fonts (Inter & Playfair Display)
 
-### Silver sponsors
+## Getting Started
 
-<p>
-<a target="_blank" href="https://www.lambdatest.com?utm_source=animeJS&utm_medium=organic&utm_campaign=july_08&utm_term=sk&utm_content=opensource">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/sponsors/lambdatest-logomark.png">
-    <img align="center" src="./assets/sponsors/lambdatest-logomark-dark.png" width="150">
-  </picture>
-</a>
-</p>
+1. Clone or download the project files
+2. Open `index.html` in a modern web browser
+3. The page will load with all animations automatically
 
-## Usage
+## File Structure
 
-Anime.js V4 works by importing ES modules like so:
-
-<table>
-<tr>
-  <td>
-
-```javascript
-import {
-  animate,
-  stagger,
-} from 'animejs';
-
-animate('.square', {
-  x: 320,
-  rotate: { from: -180 },
-  duration: 1250,
-  delay: stagger(65, { from: 'center' }),
-  ease: 'inOutQuint',
-  loop: true,
-  alternate: true
-});
+```
+├── index.html          # Main HTML file
+├── script.js           # JavaScript animations
+├── anime.esm.js        # anime.js library
+└── README.md           # This file
 ```
 
-  </td>
-  <td>
-    <img align="center" alt="Anime.js code example" src="./assets/images/usage-example-result.gif">
-  </td>
-</tr>
-</table>
+## Customization
 
-## V4 Documentation
+### Colors
+The color scheme can be easily customized by modifying the CSS custom properties in the `:root` selector:
 
-The full documentation is available [here](https://animejs.com/documentation).
+```css
+:root {
+  --black: #1a1a1a;
+  --white: #f8f8f8;
+  --gray: #6b7280;
+  --light-gray: #e5e7eb;
+  --accent: #10b981;
+  --accent-dark: #059669;
+  --background: #fafafa;
+}
+```
 
-## V3 Migration guide
+### Animations
+All animations are controlled through the `script.js` file. You can modify timing, easing, and effects by editing the animation parameters.
 
-You can find the v3 to v4 migration guide [here](https://github.com/juliangarnier/anime/wiki/Migrating-from-v3-to-v4).
+## Browser Support
 
-## NPM development scripts
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
 
-First, run `npm i` to install all the necessary packages.
-Then, execute the following scripts with `npm run <script>`.
+## License
 
-| script | action |
-| ------ | ------ |
-| `dev` | Watch any changes in `src/` and compiles the esm version to `lib/anime.esm.js` |
-| `dev-types` | Same as `dev`, but also run TypeScript and generate the `types/index.d.ts` file |
-| `build` | Generate types definition and compiles ESM / UMD / IIFE versions to `lib/` |
-| `test-browser` | Start a local server and start all browser related tests |
-| `test-node` | Start all Node related tests |
-| `open-examples` | Start a local server to browse the examples locally |
+This project is created for demonstration purposes. Feel free to use and modify as needed.
 
-© [Julian Garnier](http://juliangarnier.com) | [MIT License](LICENSE.md)
+## Credits
+
+- Design inspiration: Sequoia Capital
+- Animation library: anime.js
+- Fonts: Google Fonts (Inter & Playfair Display)

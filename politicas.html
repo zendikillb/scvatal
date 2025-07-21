@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Políticas AML & CFT - SCVATAL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'Pitch Sans';
+      src: url('https://fonts.cdnfonts.com/css/pitch-sans') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+    }
+    
+    @font-face {
+      font-family: 'Rosart';
+      src: url('https://fonts.cdnfonts.com/css/rosart') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    :root {
+      --black: #000000;
+      --white: #ffffff;
+      --gray: #6b7280;
+      --light-gray: #f3f4f6;
+      --accent: #4285F4;
+      --accent-dark: #3367D6;
+      --background: #ffffff;
+      
+      /* Dark mode variables */
+      --dark-bg: #0f0f0f;
+      --dark-surface: #1a1a1a;
+      --dark-text: #ffffff;
+      --dark-gray: #a0a0a0;
+      --dark-light-gray: #2a2a2a;
+    }
+
+    /* Dark mode styles */
+    [data-theme="dark"] {
+      --black: #ffffff;
+      --white: #0f0f0f;
+      --gray: #a0a0a0;
+      --light-gray: #1a1a1a;
+      --background: #0f0f0f;
+    }
+
+    [data-theme="dark"] body {
+      background-color: var(--dark-bg);
+      color: var(--dark-text);
+    }
+
+    [data-theme="dark"] .header {
+      background: var(--dark-surface);
+      border-bottom-color: var(--dark-border);
+    }
+
+    [data-theme="dark"] .page-header {
+      background: var(--dark-light-gray);
+    }
+
+    [data-theme="dark"] .highlight-box {
+      background: var(--dark-light-gray);
+      border-left-color: var(--accent);
+    }
+
+    [data-theme="dark"] .contact-info {
+      background: var(--dark-surface);
+      border-color: var(--dark-border);
+    }
+
+    /* Ensure all elements transition smoothly */
+    * {
+      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Pitch Sans', 'Inter', sans-serif;
+      background-color: var(--background);
+      color: var(--black);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 2rem;
+      background: var(--white);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      border-bottom: 1px solid var(--light-gray);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 600;
+      font-size: 1.5rem;
+      color: var(--black);
+      text-decoration: none;
+      font-family: 'Pitch Sans', 'Inter', sans-serif;
+    }
+
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      background: none;
+      border-radius: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .back-button {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .back-button:hover {
+      color: var(--accent-dark);
+    }
+
+    /* Page Header */
+    .page-header {
+      padding: 8rem 0 4rem;
+      text-align: center;
+      background: var(--light-gray);
+    }
+
+    .page-header h1 {
+      font-family: 'Rosart', serif;
+      font-size: 3rem;
+      font-weight: 400;
+      color: var(--black);
+      margin-bottom: 1rem;
+    }
+
+    .page-header p {
+      font-size: 1.2rem;
+      color: var(--gray);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Content */
+    .content {
+      padding: 4rem 0;
+    }
+
+    .section {
+      margin-bottom: 3rem;
+    }
+
+    .section h2 {
+      font-family: 'Rosart', serif;
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--black);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--accent);
+    }
+
+    .section h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--black);
+      margin: 2rem 0 1rem;
+    }
+
+    .section p {
+      margin-bottom: 1rem;
+      color: var(--black);
+      line-height: 1.7;
+    }
+
+    .section ul {
+      margin: 1rem 0;
+      padding-left: 2rem;
+    }
+
+    .section li {
+      margin-bottom: 0.5rem;
+      color: var(--black);
+      line-height: 1.6;
+    }
+
+    .highlight-box {
+      background: var(--light-gray);
+      border-left: 4px solid var(--accent);
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .highlight-box h4 {
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .contact-info {
+      background: var(--white);
+      border: 1px solid var(--light-gray);
+      padding: 2rem;
+      margin: 2rem 0;
+      text-align: center;
+    }
+
+    .contact-info h3 {
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .contact-info p {
+      color: var(--gray);
+      margin-bottom: 0.5rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 1rem;
+      }
+
+      .header {
+        padding: 1rem 1.5rem;
+      }
+
+      .page-header {
+        padding: 6rem 0 3rem;
+      }
+
+      .page-header h1 {
+        font-size: 2rem;
+      }
+
+      .section h2 {
+        font-size: 1.5rem;
+      }
+
+      .section h3 {
+        font-size: 1.1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header {
+        padding: 0.8rem 1rem;
+      }
+
+      .page-header h1 {
+        font-size: 1.8rem;
+      }
+
+      .section h2 {
+        font-size: 1.3rem;
+      }
+
+      .section h3 {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">
+          <img src="group.svg" alt="SCVATAL Logo">
+        </div>
+        SCVATAL
+      </a>
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <button id="theme-toggle" style="background: none; border: none; cursor: pointer; padding: 0.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent);">
+          <svg id="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg id="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+        <a href="index.html" class="back-button">← Volver al inicio</a>
+      </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+      <h1>Políticas de Prevención del Blanqueo de Capitales</h1>
+      <p>Compromiso con la transparencia y el cumplimiento regulatorio</p>
+    </section>
+
+    <!-- Content -->
+    <div class="content">
+      <section class="section">
+        <h2>SC VATAL, S.A.</h2>
+        <h3>POLÍTICAS DE PREVENCIÓN DEL BLANQUEO DE CAPITALES, EL FINANCIAMIENTO DEL TERRORISMO Y FINANCIAMIENTO DE LA PROLIFERACIÓN DE ARMAS DE DESTRUCCIÓN MASIVA</h3>
+        
+        <p>
+          SC VATAL S.A. (en adelante, la empresa), fue constituida en la República de Panamá, mediante
+          Escritura Pública 3846 del 15 de julio de 2024 de la Notaría Quinta del Circuito de Panamá e
+          inscrita a Folio 155754430 de la Sección Mercantil del Registro Público de Panamá el 17 de
+          julio de 2024, bajo la modalidad de Sociedad Anónima. Por normativa panameña no es un
+          sujeto regulado de la Ley 23 del 27 de abril de 2015; sin embargo, entiende que la mejor forma
+          de prevenir el uso de sus actividades para el blanqueo de capitales, el financiamiento
+          del terrorismo y el financiamiento de la proliferación de armas de destrucción masiva
+          (BC/FT/FPADM), es con el establecimiento de políticas, normas y procedimientos internos
+          eficaces, eficientes y oportunos, que permitan desarrollar e implementar en forma adecuada
+          el sistema de prevención.
+        </p>
+
+        <p>
+          Así, ha implementado políticas y procedimientos para prevenir el BC/FT/FPADM. El objetivo de
+          estas es establecer los lineamientos en materia de autocontrol y gestión del riesgo de
+          BC/FT/FPADM en sus relaciones con los clientes, contrapartes y empleados, con el fin de
+          prevenir la posibilidad de que la empresa sea utilizada como instrumento para canalizar
+          recursos provenientes de actividades ilícitas. Por tanto, se presenta de manera resumida,
+          cómo están compuestas las políticas de la empresa en materia BC/FT/FPADM:
+        </p>
+
+        <div class="highlight-box">
+          <h4>A. Procedimientos de Control</h4>
+          <p>
+            Son los procesos que deben ser aplicados a todas las transacciones
+            para que la empresa pueda asegurarse de su legalidad y transparencia. Estos mecanismos son:
+          </p>
+        </div>
+
+        <h3>Conocimiento del Cliente</h3>
+        <p>
+          Conocer el cliente es la capacidad de entender y explicar las
+          transacciones hechas por el cliente a través de la empresa. La información básica que
+          la empresa debe preguntar al cliente para la aplicación de este control es la
+          identificación completa, su negocio, características y cantidad de sus ingresos y gastos;
+          además del perfil de riesgo, periodicidad y detalle de las transacciones hechas a través
+          la empresa. El conocimiento del cliente inicia cuando este solicita la vinculación, a
+          través de cualquiera de los canales preestablecidos para tal fin por la empresa. Por
+          ende, y en cumplimiento de la normativa legal, el cliente debe diligenciar los Formatos
+          de Debida Diligencia completamente, presentando los datos y los documentos
+          soporte. Esta información se verifica y es confirmada. Si estas etapas son cumplidas a
+          satisfacción, se procede a entablar la relación.
+        </p>
+
+        <h3>Debida Diligencia de Contrapartes</h3>
+        <p>
+          Se estableció una política sobre el particular, que
+          busca instruir normas claras y de estricto cumplimiento para establecimiento de
+          relaciones con contrapartes para la facilitación de las transacciones efectuadas por la
+          empresa; así como, evitar riesgos asociados al BC/FT/FPADM relacionados a
+          contrapartes con las cuales se entablen relaciones de negocios.
+        </p>
+
+        <h3>Manejo de Operaciones Inusuales y Sospechosas</h3>
+        <p>
+          La empresa mantiene políticas y
+          procedimientos para la detección, gestión y descarte de operaciones inusuales. Todos
+          los empleados son responsables de la detección de transacciones inusuales. También
+          ha previsto una política de manejo de operaciones sospechosas.
+        </p>
+
+        <div class="highlight-box">
+          <h4>B. Herramientas de Control</h4>
+          <p>
+            Contamos con los siguientes instrumentos que le permiten
+            garantizar que los controles se aplican efectivamente:
+          </p>
+        </div>
+
+        <h3>Utilización de Herramientas Tecnológicas</h3>
+        <p>
+          La empresa ha desarrollado matrices de
+          riesgo para categorizar a sus clientes. También utiliza la tecnología para: (1) realizar
+          búsquedas y verificaciones, (2) el monitoreo transaccional.
+        </p>
+
+        <h3>Programa de Capacitación</h3>
+        <p>
+          Instrumento esencial para el correcto logro de la aplicación
+          de las políticas de prevención de lavado de dinero y financiación del terrorismo. La
+          empresa siempre se ha interesado en comunicar las leyes y las normas relacionadas al
+          BC/FT/FPADM a sus empleados mediante el programa de capacitación institucional.
+        </p>
+
+        <h3>Control de Operaciones en Efectivo</h3>
+        <p>
+          La empresa no realiza operaciones en efectivo, sin embargo.
+        </p>
+
+        <h3>Políticas de Prevención del BC/FT/FPADM y Establecimiento de Normas y Principios Éticos</h3>
+        <p>
+          Estos dos documentos son las columnas que sostienen la prevención de los
+          delitos antes mencionados:
+        </p>
+        <ul>
+          <li>
+            <strong>La Política de Prevención del BC/FT/FPADM</strong> contiene todos los
+            procedimientos establecidos por la empresa para prevenir estos ilícitos.
+            Contiene las políticas, los canales de comunicación y, los procedimientos de
+            control, mecanismos de información y consulta, responsabilidades de cada
+            empleado con respecto a la detección y reporte interno de transacciones
+            sospechosas, entre otros.
+          </li>
+          <li>
+            <strong>Las Normas y Principios Éticos</strong> contienen los criterios establecidos para el
+            desarrollo de las operaciones de la empresa; así como para valorar el
+            comportamiento de los empleados. Es una guía que establece las pautas
+            éticas y morales que gobiernan.
+          </li>
+        </ul>
+      </section>
+
+      <div class="contact-info">
+        <h3>Contacto para Consultas</h3>
+        <p>Para consultas sobre nuestras políticas AML & CFT:</p>
+        <p><strong>Email:</strong> compliance@scvatal.com</p>
+        <p><strong>Teléfono:</strong> +507 1234 5678</p>
+        <p><strong>Horario:</strong> Lunes a Viernes, 8:00 AM - 6:00 PM</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function setupDarkMode() {
+      const themeToggle = document.getElementById('theme-toggle');
+      const sunIcon = document.getElementById('sun-icon');
+      const moonIcon = document.getElementById('moon-icon');
+      const html = document.documentElement;
+      
+      // Check for saved theme preference or default to light mode
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      html.setAttribute('data-theme', savedTheme);
+      
+      // Update icon visibility based on current theme
+      if (savedTheme === 'dark') {
+        sunIcon.style.display = 'block';
+        moonIcon.style.display = 'none';
+      } else {
+        sunIcon.style.display = 'none';
+        moonIcon.style.display = 'block';
+      }
+      
+      themeToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const currentTheme = html.getAttribute('data-theme') || 'light';
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        // Update theme
+        html.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        
+        // Update icon visibility
+        if (newTheme === 'dark') {
+          sunIcon.style.display = 'block';
+          moonIcon.style.display = 'none';
+        } else {
+          sunIcon.style.display = 'none';
+          moonIcon.style.display = 'block';
+        }
+        
+        // Add smooth transition
+        html.style.transition = 'all 0.3s ease';
+        setTimeout(() => {
+          html.style.transition = '';
+        }, 300);
+      });
+    }
+
+    // Initialize dark mode when page loads
+    document.addEventListener('DOMContentLoaded', () => {
+      setupDarkMode();
+    });
+  </script>
+</body>
+</html> 
