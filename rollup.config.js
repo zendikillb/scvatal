@@ -1,7 +1,9 @@
 import terser from '@rollup/plugin-terser';
 import filesize from 'rollup-plugin-filesize';
-import ts from 'rollup-plugin-ts';
-import pkg from './package.json' assert { type: 'json' };
+import typescript from '@rollup/plugin-typescript';
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+const pkg = require('./package.json');
 import fs from 'fs';
 import path from 'path';
 
@@ -134,7 +136,7 @@ if (process.env.types) {
     {
       input: inputPath,
       output: { file: './types/index.js', format: 'esm', banner: banner('ESM') },
-      plugins: [prependTypes, cleanup, ts()]
+      plugins: [prependTypes, cleanup, typescript()]
     }
   );
 }
